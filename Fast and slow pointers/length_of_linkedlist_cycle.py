@@ -28,13 +28,13 @@ def main():
     head.next.next.next = Node(4)
     head.next.next.next.next = Node(5)
     head.next.next.next.next.next = Node(6)
-    print("LinkedList has cycle: " + str(find_cycle_length(head)))
+    print("Length of LinkedList cycle: " + str(find_cycle_length(head)))
 
     head.next.next.next.next.next.next = head.next.next
-    print("LinkedList has cycle: " + str(find_cycle_length(head)))
+    print("Length of LinkedList cycle: " + str(find_cycle_length(head)))
 
     head.next.next.next.next.next.next = head.next.next.next
-    print("LinkedList has cycle: " + str(find_cycle_length(head)))
+    print("Length of LinkedList cycle: " + str(find_cycle_length(head)))
 
 
 main()

@@ -2,26 +2,38 @@ class Node:
     def __init__(self,val) -> None:
         self.val = val
         self.next = None
-        self.visited = 0
 
 def start_of_cycle(head):
     # Time complexity: O(N)
     # Space complexity: O(1)
     slow, fast = head, head
-    slow.visited = 1
+    cycle_length = 0
     while fast is not None and fast.next is not None:
         slow = slow.next
         fast = fast.next.next
-        slow.visited = 1
         if slow == fast:
-            slow = slow.next
-            while slow != fast:
-                if slow.visited == 1:
-                    return slow.val
-                slow.visited = 1
-                slow = slow.next
+            cycle_length = cal_cycle_length(slow)
+            return find_start_of_cycle(head,cycle_length)
     return None
 
+def find_start_of_cycle(head,cycle_length):
+    p1, p2 = head, head
+    while cycle_length > 0:
+        p1 = p1.next
+        cycle_length -= 1
+    while p1 != p2:
+        p1 = p1.next
+        p2 = p2.next
+    return p1.val
+
+def cal_cycle_length(slow):
+    cycle_length = 0
+    curr = slow.next
+    while curr != slow:
+        cycle_length += 1
+        curr = curr.next
+    cycle_length += 1
+    return cycle_length
 
 def main():
     head = Node(1)
@@ -30,13 +42,13 @@ def main():
     head.next.next.next = Node(4)
     head.next.next.next.next = Node(5)
     head.next.next.next.next.next = Node(6)
-    print("LinkedList has cycle: " + str(start_of_cycle(head)))
+    print("Start of LinkedList cycle: " + str(start_of_cycle(head)))
 
     head.next.next.next.next.next.next = head.next.next
-    print("LinkedList has cycle: " + str(start_of_cycle(head)))
+    print("Start of LinkedList cycle: " + str(start_of_cycle(head)))
 
     head.next.next.next.next.next.next = head.next.next.next
-    print("LinkedList has cycle: " + str(start_of_cycle(head)))
+    print("Start of LinkedList cycle: " + str(start_of_cycle(head)))
 
 
 main()
