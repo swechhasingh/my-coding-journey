@@ -3,16 +3,22 @@ class Node:
         self.val = val
         self.next = None
 
-def has_cycle(head):
+def find_cycle_length(head):
     # Time complexity: O(N)
     # Space complexity: O(1)
     slow, fast = head, head
+    cycle_length = 0
     while fast is not None and fast.next is not None:
         slow = slow.next
         fast = fast.next.next
         if slow == fast:
-            return True
-    return False
+            slow = slow.next
+            cycle_length += 1
+            while slow != fast:
+                cycle_length += 1
+                slow = slow.next
+            return cycle_length
+    return cycle_length
 
 
 def main():
@@ -22,13 +28,13 @@ def main():
     head.next.next.next = Node(4)
     head.next.next.next.next = Node(5)
     head.next.next.next.next.next = Node(6)
-    print("LinkedList has cycle: " + str(has_cycle(head)))
+    print("LinkedList has cycle: " + str(find_cycle_length(head)))
 
     head.next.next.next.next.next.next = head.next.next
-    print("LinkedList has cycle: " + str(has_cycle(head)))
+    print("LinkedList has cycle: " + str(find_cycle_length(head)))
 
     head.next.next.next.next.next.next = head.next.next.next
-    print("LinkedList has cycle: " + str(has_cycle(head)))
+    print("LinkedList has cycle: " + str(find_cycle_length(head)))
 
 
 main()
