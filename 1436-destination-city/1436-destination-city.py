@@ -10,9 +10,10 @@ class Solution:
             curr = d
             while curr in source_to_destination:
                 curr = source_to_destination[curr]
+            curr_destination_city = curr
             if destination_city == None:
-                destination_city = curr
-            elif destination_city != curr:
+                destination_city = curr_destination_city
+            elif destination_city != curr_destination_city:
                 return None
         return destination_city
             
