@@ -9,6 +9,15 @@ class Solution:
         for path in paths:
             source_to_destination[path[0]] = path[1]
         destination_city = None
+        ### first solution ###
+        # for s, d in source_to_destination.items():
+        #     while d in source_to_destination:
+        #         d = source_to_destination[d]
+        #     if destination_city == None:
+        #         destination_city = d
+        #     elif destination_city != d:
+        #         return None
+        ### second solution ###
         for s, d in source_to_destination.items():
             slow, fast = s, s
             while fast in source_to_destination and source_to_destination[fast] in source_to_destination:
