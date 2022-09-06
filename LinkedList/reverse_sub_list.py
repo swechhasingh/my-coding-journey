@@ -3,19 +3,46 @@ class Node:
         self.value = value
         self.next = next
 
-def reverse_linked_list(head):
+def reverse_linked_list(head, p, q):
     # Time complexity: O(N)
     # Space complexity: O(1)
     if head is None:
         return head
-    prev = None
+
+    count = 1
+    # find p
     curr = head
-    while curr is not None:
+    left = head
+    while count != p:
+        left = curr
+        curr = curr.next
+        count += 1
+    # p: start of sub-list
+    start = curr
+
+    # find q
+    while count != q:
+        curr = curr.next
+        count += 1
+    # q: end of sub-list
+    end = curr
+    right = end.next
+
+    # reverse sub-list
+    prev = right
+    curr = start
+    while curr != right:
         temp = curr.next
         curr.next = prev
         prev = curr
         curr = temp
-    return prev
+
+    if p == 1:
+        head = prev
+    else:
+        left.next = prev
+    
+    return head
 
 def print_linked_list(head):
     while head is not None:
@@ -33,6 +60,6 @@ def main():
     print(f"Original linked list: ",end="")
     print_linked_list(head)
     print(f"Reversed linked list: ",end="")
-    print_linked_list(reverse_linked_list(head))
+    print_linked_list(reverse_linked_list(head,1,4))
 
 main()
