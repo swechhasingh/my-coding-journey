@@ -3,7 +3,7 @@ class FreqStack:
     def __init__(self):
         self.freq_counter = dict()
         self.freq_stack = dict() # dict of frequency to stack of elements with that freq
-        self.max_freq = -float("inf")
+        self.max_freq = 0
 
     def push(self, val: int) -> None:
         
@@ -11,18 +11,19 @@ class FreqStack:
             self.freq_counter[val] = 0
         self.freq_counter[val] += 1
         
-        if self.freq_counter[val] not in self.freq_stack:
-            self.freq_stack[self.freq_counter[val]] = []
-            
-        self.freq_stack[self.freq_counter[val]] += [val]
+        curr_freq = self.freq_counter[val]
         
-        if self.freq_counter[val] > self.max_freq:
-            self.max_freq = self.freq_counter[val]
+        if curr_freq not in self.freq_stack:
+            self.freq_stack[curr_freq] = []
+            
+        self.freq_stack[curr_freq] += [val]
+        
+        if curr_freq > self.max_freq:
+            self.max_freq = curr_freq
 
     def pop(self) -> int:
-        # print(self.max_freq,self.freq_stack)
         val = self.freq_stack[self.max_freq].pop()
-        if len(self.freq_stack[self.max_freq]) == 0:
+        if not len(self.freq_stack[self.max_freq]):
             self.freq_stack.pop(self.max_freq)
             self.max_freq -= 1
         self.freq_counter[val] -= 1
