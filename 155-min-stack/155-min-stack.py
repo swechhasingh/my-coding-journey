@@ -4,7 +4,7 @@ class MinStack:
         self.min_stack = []
 
     def push(self, val: int) -> None:
-        if not len(self.min_stack):
+        if not self.min_stack:
             self.min_stack += [(val,val)]
         else:
             self.min_stack += [(val,min(val, self.min_stack[-1][1]))]
