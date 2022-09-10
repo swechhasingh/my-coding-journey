@@ -10,6 +10,7 @@ class MedianFinder:
 
         left_max_num = -heapq.heappop(self.left_max_heap)
         heapq.heappush(self.right_min_heap, left_max_num)
+        
         if len(self.left_max_heap) < len(self.right_min_heap):
             x = -heapq.heappop(self.right_min_heap)
             heapq.heappush(self.left_max_heap, x)
