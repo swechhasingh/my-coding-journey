@@ -5,10 +5,8 @@ class Solution:
         queue = deque()
         word_set = set(wordList)
         queue.append(beginWord)
-        # word_set.remove(beginWord)
+
         level = 0
-        
-        # if endWord not in word_set:
         
         # BFS traversal of the word graph
         while queue:
