@@ -5,7 +5,7 @@ class Solution:
         queue = deque()
         word_set = set(wordList)
         queue.append(beginWord)
-
+         
         level = 0
         
         # BFS traversal of the word graph
@@ -24,12 +24,12 @@ class Solution:
         return 0
     
     def findNeighbours(self, word):
-        # time complexity: O(M*26)
+        # time complexity: O(M^2*26)
         neighbour_nodes = []
         alphabet = list("abcdefghijklmnopqrstuvwxyz")
         
         for i in range(len(word)):
-            word_chars = list(word)
+            word_chars = list(word) # takes O(M)
             for char in alphabet:
                 word_chars[i] = char
                 neighbour_nodes.append("".join(word_chars))
