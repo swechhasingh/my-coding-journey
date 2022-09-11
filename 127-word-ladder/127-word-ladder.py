@@ -20,15 +20,17 @@ class Solution:
                             bank.discard(new_word)
             count += 1
         return 0
+        
 #         if endWord not in wordList:
 #             return 0
+        
 #         queue = deque()
 #         visited = set()
         
 #         queue.append(beginWord)
 #         visited.add(beginWord)
-        
-#         adj_list = self.findNeighbours(wordList+[beginWord])
+#         alphabet = list("abcdefghijklmnopqrstuvwxyz")
+#         # adj_list = self.findNeighbours(wordList+[beginWord])
 #         level = 1
 #         # BFS traversal of the word graph
 #         while queue:
@@ -36,23 +38,13 @@ class Solution:
 #                 curr = queue.popleft()
 #                 if curr == endWord:
 #                     return level
-#                 for word in adj_list[curr]:
-#                     if word not in visited:
-#                         # word_set.remove(word)
-#                         queue.append(word)
-#                         visited.add(word)
+#                 for i in range(len(curr)):
+#                     for char in alphabet:
+#                         new_word = curr[:i]+char+ curr[i+1:]
+#                         if new_word not in visited and new_word in wordList:
+#                             queue.append(new_word)
+#                             visited.add(new_word)
 #             level += 1
 #         return 0
     
-#     def findNeighbours(self, wordList):
-#         # time complexity: O(M^2*26)
-#         adj_list = collections.defaultdict(set)
-#         alphabet = list("abcdefghijklmnopqrstuvwxyz")
-#         for word in wordList:
-#             for i in range(len(word)):
-#                 for char in alphabet:
-#                     new_word = word[:i]+char+word[i+1:]
-#                     if new_word in wordList:
-#                         adj_list[word].add(new_word)
-#         return adj_list
-        
+    
