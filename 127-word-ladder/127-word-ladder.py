@@ -24,7 +24,7 @@ class Solution:
                 for i in range(len(curr)):
                     for char in alphabet:
                         new_word = curr[:i]+char+ curr[i+1:]
-                        if new_word not in visited and new_word in wordList:
+                        if new_word in wordList and new_word not in visited:
                             queue.append(new_word)
                             visited.add(new_word)
             level += 1
