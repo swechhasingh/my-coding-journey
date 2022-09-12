@@ -25,14 +25,8 @@ class Solution:
                                 queue.append(neigh)
                                 visited[neigh] = visited[curr]+1
                                 parent[neigh].add(curr)
-                            else:
-                                # if visited[neigh] > visited[curr]+1:
-                                #     parent[neigh] = set()
-                                #     queue.append(neigh)
-                                #     visited[neigh] = visited[curr]+1
-                                #     parent[neigh].add(curr)
-                                if visited[neigh] == visited[curr]+1:
-                                    parent[neigh].add(curr)
+                            elif visited[neigh] == visited[curr]+1:
+                                parent[neigh].add(curr)
                                 
             return parent
         
