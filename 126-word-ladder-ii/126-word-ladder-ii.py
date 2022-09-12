@@ -6,7 +6,6 @@ class Solution:
             return []
         
         wordList = set(wordList)
-        
 
         def bfs(beginWord, wordList):
             queue = deque([beginWord])
@@ -27,12 +26,13 @@ class Solution:
                                 visited[neigh] = visited[curr]+1
                                 parent[neigh].add(curr)
                             else:
-                                if visited[neigh] > visited[curr]+1:
-                                    parent[neigh] = set()
-                                    queue.append(neigh)
-                                    visited[neigh] = visited[curr]+1
-                                    parent[neigh].add(curr)
-                                elif visited[neigh] == visited[curr]+1:
+                                # if visited[neigh] > visited[curr]+1:
+                                #     parent[neigh] = set()
+                                #     queue.append(neigh)
+                                #     visited[neigh] = visited[curr]+1
+                                #     parent[neigh].add(curr)
+                                # el
+                                if visited[neigh] == visited[curr]+1:
                                     parent[neigh].add(curr)
                                 
             return parent
