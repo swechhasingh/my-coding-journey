@@ -31,7 +31,6 @@ class Solution:
                                 #     queue.append(neigh)
                                 #     visited[neigh] = visited[curr]+1
                                 #     parent[neigh].add(curr)
-                                # el
                                 if visited[neigh] == visited[curr]+1:
                                     parent[neigh].add(curr)
                                 
