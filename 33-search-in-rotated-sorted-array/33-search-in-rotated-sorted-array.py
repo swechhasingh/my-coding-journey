@@ -8,13 +8,13 @@ class Solution:
             if nums[mid] == target:
                 return mid
             if nums[left] <= nums[mid]:
-                #left part is sorted
+                # left part is sorted
                 if target < nums[mid] and target >= nums[left]: 
                     right = mid - 1
                 else:
                     left = mid + 1
             else:
-                #right part is sorted
+                # right part is sorted
                 if target > nums[mid] and target <= nums[right]: 
                     left = mid + 1
                 else:
