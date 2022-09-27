@@ -4,10 +4,12 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         inversion_pt = -1
+        # find the inversion point: move from right to left and find where the ascending order breaks
         for i in range(len(nums)-2,-1,-1):
             if nums[i] < nums[i+1]:
                 inversion_pt = i
                 break
+                
         if inversion_pt >= 0:
             j = inversion_pt + 1
             while j < len(nums)  and nums[j] > nums[inversion_pt]:
