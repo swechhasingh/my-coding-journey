@@ -17,11 +17,10 @@ class Solution:
             nums[inversion_pt], nums[j-1] = nums[j-1], nums[inversion_pt]
             
         i = inversion_pt + 1
-        n = len(nums)
-        j = 1
-        while i < (n-j):
-            nums[i], nums[n-j] = nums[n-j], nums[i]
+        j = len(nums)-1
+        while i < j:
+            nums[i], nums[j] = nums[j], nums[i]
             i += 1
-            j += 1
+            j -= 1
         return nums
             
