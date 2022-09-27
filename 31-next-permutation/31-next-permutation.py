@@ -15,8 +15,11 @@ class Solution:
             j = inversion_pt + 1
             while j < len(nums)  and nums[j] > nums[inversion_pt]:
                 j += 1
+                
+            # swap the inversion_pt and it's next largest number
             nums[inversion_pt], nums[j-1] = nums[j-1], nums[inversion_pt]
-            
+        
+        # reverse the part of array starting from inversion_pt + 1 (i.e sort it in ascending order)
         i = inversion_pt + 1
         j = len(nums)-1
         while i < j:
