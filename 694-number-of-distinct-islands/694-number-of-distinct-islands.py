@@ -41,5 +41,5 @@ class Solution:
         island_traverse += self.__traverseIsland(grid, x, y-1, visited, "L") #left
         island_traverse += self.__traverseIsland(grid, x-1, y, visited, "U") #up
         island_traverse += self.__traverseIsland(grid, x+1, y, visited, "D") #down
-        island_traverse += 'B'
+        island_traverse += 'B' # key to differentiate paths
         return island_traverse
