@@ -17,7 +17,6 @@ class Solution:
                 if grid[i][j] == 1 and not visited[i][j]:
                     island_traverse = self.__traverseIsland(grid, i, j, visited, "O")
                     distinct_islands.add(island_traverse)
-        print(distinct_islands)
         return len(distinct_islands)
                 
         
@@ -41,5 +40,5 @@ class Solution:
         island_traverse += self.__traverseIsland(grid, x, y-1, visited, "L") #left
         island_traverse += self.__traverseIsland(grid, x-1, y, visited, "U") #up
         island_traverse += self.__traverseIsland(grid, x+1, y, visited, "D") #down
-        island_traverse += 'B' # key to differentiate paths
+        island_traverse += 'B' # backtracking, key to differentiate paths
         return island_traverse
