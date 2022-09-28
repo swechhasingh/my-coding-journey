@@ -1,6 +1,6 @@
 class Solution:
     """Time complexity: O(M*N), linear traversal of all elements of the grid
-    Space complexity: O(min(M*N)) recursive DFS stack space in worst case when all the cells are 1
+    Space complexity: O(min(M*N)), DFS recursion stack space in worst case when all the cells are 1
     """
     def numIslands(self, grid: List[List[str]]) -> int:
         rows = len(grid)
