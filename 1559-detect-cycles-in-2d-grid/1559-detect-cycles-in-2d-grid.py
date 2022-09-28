@@ -9,11 +9,13 @@ class Solution:
         # visited matrix: boolean matrix to keep track of already visited cells
         visited= [[False for _ in range(cols)] for _ in range(rows)]
         
-        # linear traversal of grid, input (-1,-1) bcoz cannot move to the cell that was visited in the last move.
+        # last move for start of a new value will be (-1,-1)
+        prev_x, prev_y = -1, -1
+        # linear traversal of grid
         for i in range(rows):
             for j in range(cols):
                 if not visited[i][j]:
-                    if self.__traverseIsland(grid, i, j, visited, -1, -1):
+                    if self.__traverseIsland(grid, i, j, visited, prev_x, prev_y):
                         return True
                 
         return False
@@ -26,11 +28,13 @@ class Solution:
         if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]):
             return False
         
-        # water cells and already visited cells
+        # check with previous cell but exclude boundary prev_x and prev_y
         if prev_x > -1 and prev_y > -1:
+            # cell with different value from previous cell
             if grid[x][y] != grid[prev_x][prev_y]:
                 return False
-        
+            
+            # already visited cell and same value as the previous cell
             if visited[x][y] and grid[x][y] == grid[prev_x][prev_y]:
                 return True
         
@@ -38,6 +42,7 @@ class Solution:
         visited[x][y] = True
         
         # recursively traverse all the neighbours of (x,y) cell
+        # cannot move to the cell that was visited in the last move
         if y+1 != prev_y and self.__traverseIsland(grid, x, y+1, visited, x, y): #right
             return True
         if y-1 != prev_y and self.__traverseIsland(grid, x, y-1, visited, x, y): #left
