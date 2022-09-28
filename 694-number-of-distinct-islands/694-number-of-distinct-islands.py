@@ -34,7 +34,6 @@ class Solution:
         # mark the current cell as visited
         visited[x][y] = True
         
-        
         # recursively traverse all the neighbours of (x,y) cell
         island_traverse += self.__traverseIsland(grid, x, y+1, visited, "R") #right
         island_traverse += self.__traverseIsland(grid, x, y-1, visited, "L") #left
