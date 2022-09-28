@@ -1,4 +1,7 @@
 class Solution:
+    """Time complexity: O(M*N), linear traversal of all elements of the grid
+    Space complexity: O(min(M*N)) recursive DFS stack space in worst case
+    """
     def numIslands(self, grid: List[List[str]]) -> int:
         rows = len(grid)
         cols = len(grid[0])
@@ -19,6 +22,8 @@ class Solution:
                 
         
     def __traverseIsland(self, grid, x, y, visited):
+        """DFS traverse of island using recursion
+        """
         # boundary cases
         if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]):
             return
