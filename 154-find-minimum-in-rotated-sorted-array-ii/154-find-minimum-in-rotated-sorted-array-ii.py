@@ -4,8 +4,10 @@ class Solution:
         end = len(nums)-1
         while start < end:
             mid = (start+end)//2
+            
             if nums[mid] < nums[mid+1] and nums[mid] < nums[mid-1]:
                 return nums[mid]
+            
             if nums[start] == nums[end] and nums[start] == nums[mid]:
                 end -= 1
                 start += 1
