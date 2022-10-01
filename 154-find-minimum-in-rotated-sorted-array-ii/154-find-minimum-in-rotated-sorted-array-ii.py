@@ -11,9 +11,8 @@ class Solution:
                 start += 1
             elif nums[start] < nums[end]:
                 end = mid - 1
+            elif nums[start] <= nums[mid]:
+                start = mid + 1
             else:
-                if nums[start] <= nums[mid]:
-                    start = mid + 1
-                else:
-                    end = mid
+                end = mid
         return nums[start]
