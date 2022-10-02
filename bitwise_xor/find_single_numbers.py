@@ -10,9 +10,9 @@ def find_single_numbers(arr):
     
     num1, num2 = 0, 0
     for x in arr:
-        if (x & rightmost_one_bit) != 0:
+        if (x & rightmost_one_bit) != 0: #the bit is set
             num1 ^= x
-        else:
+        else: #the bit is not set
             num2 ^= x
 
     return num1, num2
