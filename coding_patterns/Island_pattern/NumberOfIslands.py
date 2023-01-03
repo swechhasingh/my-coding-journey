@@ -1,11 +1,9 @@
 # Given a 2D array (i.e., a matrix) containing only 1s (land) and 0s (water), count the number of islands in it.
 
-# DFS approach
-
 from typing import List
 from collections import deque
 
-
+# DFS approach
 # time complexity: O(M*N) space complexity: O(M*N) (worst case DFS recursive stack)
 def visit_island_dfs(matrix, i, j):
     # check for edges of the matrix
