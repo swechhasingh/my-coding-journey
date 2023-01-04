@@ -18,17 +18,18 @@ def visit_island_dfs(matrix, i, j):
 
     # visit neighbours of (i,j)
     # bottom
-    visit_island_dfs(matrix, i+1, j) 
+    visit_island_dfs(matrix, i + 1, j)
     # top
-    visit_island_dfs(matrix, i-1, j)
+    visit_island_dfs(matrix, i - 1, j)
     # right
-    visit_island_dfs(matrix, i, j+1)
+    visit_island_dfs(matrix, i, j + 1)
     # left
-    visit_island_dfs(matrix, i, j-1)
+    visit_island_dfs(matrix, i, j - 1)
+
 
 # time complexity: O(M*N) and space complexity: O(min(M,N)) (worst case deque size)
 def visit_island_bfs(matrix, i, j):
-    neighbours = deque([(i,j)])
+    neighbours = deque([(i, j)])
     while neighbours:
         x, y = neighbours.popleft()
         # check for edges of the matrix
@@ -38,14 +39,15 @@ def visit_island_bfs(matrix, i, j):
         if matrix[x][y] == 0:
             continue
 
-        # mark (x,y) as visited by making it a water cell            
+        # mark (x,y) as visited by making it a water cell
         matrix[x][y] = 0
 
         # push all the neighbours of (x,y) in the neighbours queue
-        neighbours.extend([(x+1,y)])
-        neighbours.extend([(x-1,y)])
-        neighbours.extend([(x,y+1)])
-        neighbours.extend([(x,y-1)])
+        neighbours.extend([(x + 1, y)])
+        neighbours.extend([(x - 1, y)])
+        neighbours.extend([(x, y + 1)])
+        neighbours.extend([(x, y - 1)])
+
 
 def find_number_of_islands(matrix: List[List[int]]):
     count_islands = 0
@@ -60,9 +62,22 @@ def find_number_of_islands(matrix: List[List[int]]):
 
     return count_islands
 
+
 if __name__ == "__main__":
-    matrix = [[0, 1, 1, 1, 0], [0, 0, 0, 1, 1], [0, 1, 1, 1, 0], [0, 1, 1, 0, 0], [0, 0, 0, 0, 0]]
+    matrix = [
+        [0, 1, 1, 1, 0],
+        [0, 0, 0, 1, 1],
+        [0, 1, 1, 1, 0],
+        [0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0],
+    ]
     print(find_number_of_islands(matrix))
 
-    matrix = [[1, 1, 1, 0, 0], [0, 1, 0, 0, 1], [0, 0, 1, 1, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0]]
+    matrix = [
+        [1, 1, 1, 0, 0],
+        [0, 1, 0, 0, 1],
+        [0, 0, 1, 1, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0],
+    ]
     print(find_number_of_islands(matrix))

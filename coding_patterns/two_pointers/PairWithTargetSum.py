@@ -15,19 +15,20 @@ def find_pair_with_target_sum(array: List[int], target: int):
 
     return []
 
+
 if __name__ == "__main__":
-    array = [0,1,2,3,4,5,6,7,8,9]
+    array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     target = 13
-    print(find_pair_with_target_sum(array,target))
+    print(find_pair_with_target_sum(array, target))
 
-    array = [0,1,2,3,4,5,6,7,8,9]
+    array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     target = 20
-    print(find_pair_with_target_sum(array,target))
+    print(find_pair_with_target_sum(array, target))
 
-    array = [0,1,2,3,4,5,6,7,8,9]
+    array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     target = -1
-    print(find_pair_with_target_sum(array,target))
+    print(find_pair_with_target_sum(array, target))
 
-    array = [0,1,2,3,4,5,6,7,8,9]
+    array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     target = 4
-    print(find_pair_with_target_sum(array,target))
+    print(find_pair_with_target_sum(array, target))
