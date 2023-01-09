@@ -51,6 +51,14 @@ def find_middle(head: Node):
     return slow.val
 
 
+def reverse(head: Node):
+    return head
+
+
+def is_palindrome(head: Node):
+    return False
+
+
 if __name__ == "__main__":
     head = Node(1)
     head.next = Node(2)
