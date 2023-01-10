@@ -48,31 +48,51 @@ def find_middle(head: Node):
     while fast != None and fast.next != None:
         slow = slow.next
         fast = fast.next.next
-    return slow.val
+    return slow
 
 
+# time complexity: O(N) and space complexity: O(1)
 def reverse(head: Node):
-    return head
+    prev = None
+    while head is not None:
+        next = head.next
+        head.next = prev
+        prev = head
+        head = next
+    return prev
 
 
+# time complexity: O(N) and space complexity: O(1)
 def is_palindrome(head: Node):
-    return False
+    # find middle of linkedlist and reverse the second half,
+    # then iterate both halfs simultaneously
+    # return true if all the nodes match otherwise return False
+    mid = find_middle(head)
+    secondhalf_head = reverse(mid)
+    copy_secondhalf_head = secondhalf_head
+    while head is not None and secondhalf_head is not None:
+        if head.val != secondhalf_head.val:
+            return False
+        head = head.next
+        secondhalf_head = secondhalf_head.next
+    reverse(copy_secondhalf_head)
+    return True
 
 
 if __name__ == "__main__":
     head = Node(1)
     head.next = Node(2)
-    print(f"Middle of LinkedList: {find_middle(head)}")
+    print(f"Middle of LinkedList: {find_middle(head).val}")
 
     head.next.next = Node(3)
-    print(f"Middle of LinkedList: {find_middle(head)}")
+    print(f"Middle of LinkedList: {find_middle(head).val}")
 
     head.next.next.next = Node(4)
     head.next.next.next.next = Node(5)
     head.next.next.next.next.next = Node(6)
     print(f"LinkedList has cycle: {has_cycle_and_cycle_length(head)}")
     print(f"Start of cycle: {find_start_of_cycle(head)}")
-    print(f"Middle of LinkedList: {find_middle(head)}")
+    print(f"Middle of LinkedList: {find_middle(head).val}")
 
     head.next.next.next.next.next.next = head.next.next
     print(f"LinkedList has cycle: {has_cycle_and_cycle_length(head)}")
@@ -85,3 +105,14 @@ if __name__ == "__main__":
     head.next.next.next.next.next.next = head
     print(f"LinkedList has cycle: {has_cycle_and_cycle_length(head)}")
     print(f"Start of cycle: {find_start_of_cycle(head)}")
+
+    head = Node(2)
+    head.next = Node(4)
+    head.next.next = Node(6)
+    head.next.next.next = Node(4)
+    head.next.next.next.next = Node(2)
+
+    print(f"Is palindrome: {is_palindrome(head)}")
+
+    head.next.next.next.next.next = Node(2)
+    print(f"Is palindrome: {is_palindrome(head)}")
