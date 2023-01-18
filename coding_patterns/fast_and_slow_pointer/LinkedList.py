@@ -91,7 +91,7 @@ def rearrange_linkedlist(head: Node):
         second_half_head = second_half_head.next
         curr.next.next = next
         curr = next
-    return head
+    # return head
 
 
 def print_linkedlist(head: None):
@@ -144,8 +144,15 @@ if __name__ == "__main__":
     head.next.next = Node(6)
     head.next.next.next = Node(8)
     head.next.next.next.next = Node(10)
+    print("Original: ", end="")
     print_linkedlist(head)
-    print_linkedlist(rearrange_linkedlist(head))
+    rearrange_linkedlist(head)
+    print("Rearranged: ", end="")
+    print_linkedlist(head)
+
     head.next.next.next.next.next = Node(12)
+    print("Original: ", end="")
     print_linkedlist(head)
-    print_linkedlist(rearrange_linkedlist(head))
+    rearrange_linkedlist(head)
+    print("Rearranged: ", end="")
+    print_linkedlist(head)
