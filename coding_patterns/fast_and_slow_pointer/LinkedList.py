@@ -79,6 +79,28 @@ def is_palindrome(head: Node):
     return True
 
 
+def rearrange_linkedlist(head: Node):
+    mid = find_middle(head)
+    second_half_head = mid.next
+    mid.next = None
+    second_half_head = reverse(second_half_head)
+    curr = head
+    while second_half_head is not None:
+        next = curr.next
+        curr.next = second_half_head
+        second_half_head = second_half_head.next
+        curr.next.next = next
+        curr = next
+    return head
+
+
+def print_linkedlist(head: None):
+    while head is not None:
+        print(head.val, end=", ")
+        head = head.next
+    print()
+
+
 if __name__ == "__main__":
     head = Node(1)
     head.next = Node(2)
@@ -116,3 +138,14 @@ if __name__ == "__main__":
 
     head.next.next.next.next.next = Node(2)
     print(f"Is palindrome: {is_palindrome(head)}")
+
+    head = Node(2)
+    head.next = Node(4)
+    head.next.next = Node(6)
+    head.next.next.next = Node(8)
+    head.next.next.next.next = Node(10)
+    print_linkedlist(head)
+    print_linkedlist(rearrange_linkedlist(head))
+    head.next.next.next.next.next = Node(12)
+    print_linkedlist(head)
+    print_linkedlist(rearrange_linkedlist(head))
