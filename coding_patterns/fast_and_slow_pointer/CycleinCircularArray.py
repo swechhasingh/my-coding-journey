@@ -1,3 +1,5 @@
+# Write a method to determine if the array has a cycle. The cycle should have more than one element and should follow one direction which means the cycle should not contain both forward and backward movements.
+
 from typing import List
 
 # time complexity: O(N^2) (iterating all elements of the array and trying to find a cycle for each element)
