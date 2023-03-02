@@ -5,7 +5,7 @@
 # to consider all sources at any step.
 from collections import deque
 
-
+# O(v!*E)
 def find_all_topological_orderings(v, edges):
     if v <= 0:
         return []
